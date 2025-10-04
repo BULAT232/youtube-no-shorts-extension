@@ -1,0 +1,33 @@
+{
+  "name": "No YouTube Shorts",
+  "description": "Блокирует и скрывает YouTube Shorts. Открывает видео в обычном плеере.",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://*.youtube.com/*"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "rules",
+        "enabled": true,
+        "path": "rules_1.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["scripts/content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_title": "No Shorts"
+  }
+}
